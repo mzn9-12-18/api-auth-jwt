@@ -1,3 +1,4 @@
+import { verifyToken } from "../middlewares/authMiddleware.js";
 import Router from "express";
 import {
   deleteTask,
@@ -8,9 +9,9 @@ import {
 
 const router = Router();
 
-router.get("/", getTasks);
-router.post("/", postTask);
-router.put("/:id", putTask);
-router.delete("/:id", deleteTask);
+router.get("/", verifyToken, getTasks);
+router.post("/", verifyToken, postTask);
+router.put("/:id", verifyToken, putTask);
+router.delete("/:id", verifyToken, deleteTask);
 
 export default router;

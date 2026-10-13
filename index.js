@@ -11,10 +11,12 @@
 // });
 
 //Express
+import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import { dbConnect } from "./config/database.js";
 import taskRouter from "./routes/taskRoutes.js";
+import authRouter from "./routes/authRoutes.js";
 
 const app = express();
 const port = 4500;
@@ -24,9 +26,12 @@ app.use(express.json());
 app.use(express.static("public")); //configuramos la carpeta public para nuestras páginas web
 app.use(cors());
 
+
+
 await dbConnect();
 
 app.use("/api/task", taskRouter);
+app.use("/api/auth", authRouter);
 
 app.listen(port, () => {
   console.log(`Server online en puerto: ${port}`);

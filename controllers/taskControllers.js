@@ -41,7 +41,7 @@ const putTask = async (req, res) => {
 
   return res.status(200).json({
     msg: "Tarea actualizada",
-    completada,
+    tarea,
   });
 };
 
