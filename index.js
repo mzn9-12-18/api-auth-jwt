@@ -17,6 +17,7 @@ import cors from "cors";
 import { dbConnect } from "./config/database.js";
 import taskRouter from "./routes/taskRoutes.js";
 import authRouter from "./routes/authRoutes.js";
+import categoryRouter from "./routes/categoryRoutes.js";
 
 const app = express();
 const port = 4500;
@@ -32,7 +33,7 @@ await dbConnect();
 
 app.use("/api/task", taskRouter);
 app.use("/api/auth", authRouter);
-
+app.use("/api/categories", categoryRouter);
 app.listen(port, () => {
   console.log(`Server online en puerto: ${port}`);
 });
